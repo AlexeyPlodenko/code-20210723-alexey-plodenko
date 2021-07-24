@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+    php:
+        image: php:7.4-apache
+        ports:
+            - 80:80
+        volumes:
+            - ./backend/:/var/www/
+
+    mysql:
+        image: mysql:8.0
+        volumes:
+            - ./docker/mysql/config/custom.cnf:/etc/mysql/conf.d/custom.cnf
+            - ./docker/mysql/data/:/var/lib/mysql/
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_DATABASE: 'code'
+            MYSQL_ROOT_PASSWORD: 'qjh#34g5Phj34gtjhgthr'
+            MYSQL_USER: 'code'
+            MYSQL_PASSWORD: 'ajeZgtjAhag*te46'
+        logging:
+            options:
+                max-size: "16k"
+                max-file: "10"
