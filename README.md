@@ -2,4 +2,5 @@
 
 To start the project:
 1. Navigate to the project's directory in CLI.
-2. Execute `docker-compose up`.
+2. Navigate to `/backend` and execute `composer install`.
+4. Navigate to the project's root directory and execute `docker-compose up`.
