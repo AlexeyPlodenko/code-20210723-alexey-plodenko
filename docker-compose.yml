@@ -2,14 +2,18 @@ version: '3.1'
 
 services:
     php:
-        image: php:7.4-apache
+        build: './docker/php/'
         ports:
             - 80:80
         volumes:
             - ./backend/:/var/www/
+        logging:
+            options:
+                max-size: "1k"
+                max-file: "1"
 
     mysql:
-        image: mysql:8.0
+        image: mysql:5.7
         volumes:
             - ./docker/mysql/config/custom.cnf:/etc/mysql/conf.d/custom.cnf
             - ./docker/mysql/data/:/var/lib/mysql/
@@ -22,5 +26,5 @@ services:
             MYSQL_PASSWORD: 'ajeZgtjAhag*te46'
         logging:
             options:
-                max-size: "16k"
-                max-file: "10"
+                max-size: "1k"
+                max-file: "1"
