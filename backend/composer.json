@@ -10,7 +10,13 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "^7.0",
+        "ext-pdo": "*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-fileinfo": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",

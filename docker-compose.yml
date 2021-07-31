@@ -2,11 +2,14 @@ version: '3.1'
 
 services:
     php:
-        build: './docker/php/'
+        build: ./docker/php/
         ports:
-            - 80:80
+            - "80:80"
         volumes:
             - ./backend/:/var/www/
+        depends_on:
+            - mysql
+            - redis
         logging:
             options:
                 max-size: "1k"
@@ -18,7 +21,7 @@ services:
             - ./docker/mysql/config/custom.cnf:/etc/mysql/conf.d/custom.cnf
             - ./docker/mysql/data/:/var/lib/mysql/
         ports:
-            - 3306:3306
+            - "3306:3306"
         environment:
             MYSQL_DATABASE: 'code'
             MYSQL_ROOT_PASSWORD: 'qjh#34g5Phj34gtjhgthr'
@@ -28,3 +31,23 @@ services:
             options:
                 max-size: "1k"
                 max-file: "1"
+
+    redis:
+        image: redis:6.2-alpine
+
+    queue:
+        build: ./docker/queue/
+        volumes:
+            - ./backend/:/var/www/
+        depends_on:
+            - mysql
+            - redis
+
+    schedule:
+        build: ./docker/schedule/
+        volumes:
+            - ./backend/:/var/www/
+        depends_on:
+            - mysql
+            - redis
+

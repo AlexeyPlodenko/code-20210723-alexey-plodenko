@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\FetchExchangeRates;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -32,8 +33,8 @@ class UserController extends Controller
             return respond(['error' => 'Invalid credentials.'], 401);
         }
 
-        $user = Auth::getUser();
-        return respond($user->get()->toArray());
+        $user = Auth::user();
+        return respond(['user' => $user->toArray()]);
     }
 
     /**
@@ -46,11 +47,13 @@ class UserController extends Controller
 
     /**
      * @param int $userId
-     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function show(int $userId)
     {
+$f = new FetchExchangeRates();
+$f->handle();
+
         $user = User::find($userId);
         if ($user) {
             return respond(['user' => $user]);
@@ -62,7 +65,6 @@ class UserController extends Controller
     /**
      * @param int $userId
      * @param Request $req
-     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function update(int $userId, Request $req)

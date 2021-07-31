@@ -4,6 +4,8 @@ Laravel 8, PHP 8, MySQL 5.7, Docker, REST API
 ## Prerequisites
 Docker, Composer.
 
+Free ports - 80.
+
 ## To start the project
 1. Navigate to the project's directory in CLI.
 2. Navigate to `/backend` and execute `composer install`.
@@ -31,13 +33,10 @@ Postman collection https://www.getpostman.com/collections/66ccc9718b91bd71ade4
 * Brute-force protection.
 * Throttle protection.
 * Nginx instead of Apache to save resources and mitigate the slow connections.
-* ...
-
-## Notes
-Seems like the PHPDoc is becoming a legacy, considering the improved type hints support in the latest PHP version.
 
 ## TODO
 * JWT
 * Tests
-* Fix Admin access
 * Websockets
+* List users endpoint
+* Disable exposed Redis ports in Docker
