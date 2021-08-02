@@ -4,15 +4,14 @@
     <title>Pusher Test</title>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('c364920387db05b1e1a1', {
+        const pusher = new Pusher('c364920387db05b1e1a1', {
             cluster: 'eu'
         });
 
-        var channel = pusher.subscribe('my-channel');
+        const channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
             const msg = `${new Date()}: <b>${JSON.stringify(data)}</b><br>`;
 

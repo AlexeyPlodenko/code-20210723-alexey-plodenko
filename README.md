@@ -15,7 +15,7 @@ Free ports - 80.
 ## Implementation
 The implementation provides a CRUD interface to the users.
 
-API authorization is ensured by using the user API tokens. Access to the the update and delete user is restricted to the user himself or admin.
+API authorization is ensured by using the user API tokens. Access to the update and delete user is restricted to the user himself or admin.
 
 ## API Endpoints
 * POST /api/v1/user - Register a user.

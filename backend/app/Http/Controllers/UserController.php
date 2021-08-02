@@ -23,7 +23,6 @@ class UserController extends Controller
 
     /**
      * @param Request $req
-     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function login(Request $req)
@@ -51,9 +50,6 @@ class UserController extends Controller
      */
     public function show(int $userId)
     {
-$f = new FetchExchangeRates();
-$f->handle();
-
         $user = User::find($userId);
         if ($user) {
             return respond(['user' => $user]);
@@ -116,7 +112,6 @@ $f->handle();
 
     /**
      * @param Request $req
-     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function store(Request $req)
